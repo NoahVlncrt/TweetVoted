@@ -10,8 +10,6 @@ Meteor.methods({
 				name: result.data.user.name,
 				handle: result.data.user.screen_name,
 				text: result.data.text,
-				profileimg: result.data.user.profile_image_url,
-				user: result.data.user.url
 			};
 			Tweets.insert({
 				title: title,
@@ -19,8 +17,6 @@ Meteor.methods({
 					name: tweet.name,
 					handle: tweet.handle,
 					text: tweet.text,
-					profile: tweet.profileimg,
-					user: tweet.user
 				},
 				createdAt: createdAt,
 			});
