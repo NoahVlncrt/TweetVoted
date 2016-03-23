@@ -4,22 +4,33 @@ TweetVoted brings a voting aspect to tweets users submit!
 
 ### Feature Roadmap
 #### V1 Release
-- [] Latest Filter
-- [] Top Filter
-- [] Voting
+
+- Latest Filter
+- Top Filter
+- Voting
+
+
 #### v2 Release
-- [] Commenting
+
+- Commenting
+
 #### v3 Release
-- [] Collection of Tweets
+
+- Collection of Tweets
 
 
 ### Platform Roadmap
 #### v1 Release
-- [] Web
+
+- Web
+
 #### v2 Release
-- [] Web, Android
+
+- Web, Android
+
 #### v3 Release
-- [] Web, Android, iOS
+
+- Web, Android, iOS
 
 ---
 ### Community Requested Features
