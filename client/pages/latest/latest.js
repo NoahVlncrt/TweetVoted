@@ -4,3 +4,7 @@ Template.latest.helpers({
 		});
 	}
 });
+Template.latest.onRendered(function(){
+	$("#topTab").removeClass("active");
+	$("#latestTab").addClass("active");
+});
