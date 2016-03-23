@@ -13,6 +13,7 @@ Meteor.methods({
 					url: null
 				}
 			} else {
+				
 				dataType = result.data.extended_entities.media[0].type
 				
 				if( (dataType === 'video') || (dataType === 'animated_gif') ){
@@ -33,6 +34,7 @@ Meteor.methods({
 						url: result.data.extended_entities.media[0].media_url
 					}
 				} else {
+					console.log("error!")
 					tweetMedia = {
 						type: null,
 						url: null
@@ -55,7 +57,7 @@ Meteor.methods({
 					name: tweet.name,
 					handle: tweet.handle,
 					text: tweet.text,
-					Media: {
+					media: {
 						type: tweetMedia.type,
 						url: tweetMedia.url
 					}

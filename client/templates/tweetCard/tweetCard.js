@@ -6,3 +6,8 @@ Template.tweetCard.events({
     Tweets.update(this._id, {$inc:{score:-1}});
   }
 });
+Template.tweetCard.helpers({
+  equals: function(v1,v2){
+    return (v1 === v2);
+  }
+});

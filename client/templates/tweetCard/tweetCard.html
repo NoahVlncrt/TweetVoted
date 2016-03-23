@@ -16,7 +16,19 @@
       <div class="card-panel">
         <p><b>{{tweetData.name}}</b> - @{{tweetData.handle}}</p>
         <p>{{tweetData.text}}</p>
-        <img src="{{tweetData.media}}" class="responsive-img">
+        {{#if equals tweetData.media.type "video"}}
+          <video class="responsive-video" controls>
+            <source src="{{tweetData.media.url}}" type="video/mp4">
+          </video>
+        {{/if}}
+        {{#if equals tweetData.media.type "gif"}}
+          <video class="responsive-video" controls loop>
+            <source src="{{tweetData.media.url}}" type="video/mp4">
+          </video>
+        {{/if}}
+        {{#if equals tweetData.media.type "photo"}}
+          <img class="responsive-img" src="{{tweetData.media.url}}">
+        {{/if}}
       </div>
     </div>
   </div>
