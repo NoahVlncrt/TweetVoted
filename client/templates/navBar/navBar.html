@@ -1,9 +1,9 @@
 <template name="navBar">
   <ul id="dropdown" class="dropdown-content">
     {{#if currentUser}}
-       <li><a href="#">{{user.email[0]}}</a></li>
+       <li><a href="#" class="logout">Logout</a></li>
     {{else}}
-        <li><a href="#">Login</a></li>
+        <li><a href="/login">Login</a></li>
     {{/if}}
   </ul>
   <nav>
