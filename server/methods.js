@@ -63,7 +63,8 @@ Meteor.methods({
 					}
 				},
 				createdAt: createdAt,
-				createdBy: this.userId
+				createdBy: this.userId,
+				alreadyVoted: []
 			});
 		}));
  	},
