@@ -1,16 +1,34 @@
 Template.tweetCard.events({
   'click .uparrow': function(){
-  	var tweetArray = Tweets.findOne({_id: this._id});
-  	console.log(tweetArray.alreadyVoted.includes(Meteor.userId()))
-    if(tweetArray.alreadyVoted.includes(Meteor.userId()) === true){
-      console.log("YOU DID IT, GOOD JOB NOAH!")
+    
+    tweetArray = Tweets.findOne({_id: this._id});
+    
+    if(Meteor.userId() === null) {
+      console.log("Please login before using the service.");
     } else {
-      console.log("WHY DID YOU FAIL YOU SHIT????")
+      
+      if(tweetArray.alreadyVoted.includes(Meteor.userId()) === true) {
+        console.log("It seems you have already voted!");
+      } else {
+        Tweets.update(this._id, {$inc:{score: 1}});
+        Tweets.update({_id: this._id}, {$push:{alreadyVoted: Meteor.userId()}});
+      }
     }
   },
   'click .downarrow': function(){
-    Tweets.update(this._id, {$inc:{score:-1}});
-    Tweets.update({_id: this._id}, {$push:{alreadyVoted: Meteor.userId()}});
+    tweetArray = Tweets.findOne({_id: this._id});
+    
+    if(Meteor.userId() === null) {
+      console.log("Please login before using the service.");
+    } else {
+      
+      if(tweetArray.alreadyVoted.includes(Meteor.userId()) === true) {
+        console.log("It seems you have already voted!");
+      } else {
+        Tweets.update(this._id, {$inc:{score: -1}});
+        Tweets.update({_id: this._id}, {$push:{alreadyVoted: Meteor.userId()}});
+      }
+    }
   }
 });
 Template.tweetCard.helpers({
