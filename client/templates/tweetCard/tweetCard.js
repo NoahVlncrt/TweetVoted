@@ -1,17 +1,18 @@
 Template.tweetCard.events({
   'click .uparrow': function(){
-    
     tweetArray = Tweets.findOne({_id: this._id});
+    locateOwner = function(){
+      return tweetArray.alreadyVoted.user === this.userId
+    };
     
     if(Meteor.userId() === null) {
       console.log("Please login before using the service.");
     } else {
-      
-      if(tweetArray.alreadyVoted.includes(Meteor.userId()) === true) {
+      if(tweetArray.alreadyVoted.find(locateOwner).user === Meteor.userId()) {
         console.log("It seems you have already voted!");
       } else {
         Tweets.update(this._id, {$inc:{score: 1}});
-        Tweets.update({_id: this._id}, {$push:{alreadyVoted: Meteor.userId()}});
+        Tweets.update({_id: this._id}, {$push:{alreadyVoted: {user: this.userId, voteType: "up"}}});
       }
     }
   },
@@ -26,7 +27,7 @@ Template.tweetCard.events({
         console.log("It seems you have already voted!");
       } else {
         Tweets.update(this._id, {$inc:{score: -1}});
-        Tweets.update({_id: this._id}, {$push:{alreadyVoted: Meteor.userId()}});
+        Tweets.update({_id: this._id}, {$push:{alreadyVoted: {user: Meteor.userId(), voteType: "down"}}});
       }
     }
   }
