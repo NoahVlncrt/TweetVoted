@@ -64,7 +64,10 @@ Meteor.methods({
 				},
 				createdAt: createdAt,
 				createdBy: this.userId,
-				alreadyVoted: []
+				votes: {
+				  up: [],
+				  down: []
+				}
 			});
 		}));
  	},
